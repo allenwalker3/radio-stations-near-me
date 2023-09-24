@@ -1,0 +1,39 @@
+{
+  "cli": {
+    "version": ">= 5.2.0",
+    "promptToConfigurePushNotifications": false,
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "extends": "production"
+    },
+    "preview": {
+      "distribution": "internal",
+      "extends": "production",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "node": "18.16.1",
+      "env": {
+        "EXPO_PUBLIC_BACKEND_API_URL": "http://rsf-backend.freemyip.com:4040"
+      },
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "eawcol1975@gmail.com",
+        "ascAppId": "6466750677",
+        "appleTeamId": "FKFBY9TKW6"
+      }
+    }
+  }
+}

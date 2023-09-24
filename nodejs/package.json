@@ -1,0 +1,22 @@
+{
+  "name": "mysql-fcc",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "csv-parse": "^5.5.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "jsdom": "^22.1.0",
+    "morgan": "~1.9.1",
+    "mysql2": "^3.6.0",
+    "nodemon": "^3.0.1",
+    "sequelize": "^6.32.1",
+    "sequelize-cli": "^6.6.1"
+  }
+}

@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  app:
+    depends_on:
+      - mysqldb
+    image: node:18-alpine
+    #restart: on-failure
+    container_name: nodejs-container
+    env_file: ./.env
+    command: sh -c "npm install && npm start"
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DB: $DB_DATABASE
+      DB_PORT: $DB_DOCKER_PORT
+
+  mysqldb:
+    image: mysql:8.0
+    restart: on-failure
+    container_name: mysql-container
+    env_file: ./.env
+    volumes:
+      - db-data:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD
+      MYSQL_DATABASE: $DB_DATABASE
+
+volumes:
+  db-data:

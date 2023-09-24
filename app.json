@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Radio Stations Near Me",
+    "description": "Find nearby regulated AM & FM radio station frequencies",
+    "slug": "radio-stations-near-me",
+    "privacy": "unlisted",
+    "userInterfaceStyle": "light",
+    "orientation": "portrait",
+    "icon": "./assets/icon-ios.png",
+    "version": "1.0.1",
+    "splash": {
+      "image": "./assets/iphone-splash-preview-dark.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#D1CBD3"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "icon": "./assets/icon-ios.png",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.allenwalker.radiostationsnearme",
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon-android.png",
+        "backgroundColor": "#0770C9"
+      },
+      "package": "com.allenwalker.radiostationsnearme",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],      
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ],
+    "owner": "orkowizard",
+    "extra": {
+      "eas": {
+        "projectId": "e0233a7d-4900-481e-acac-8f70c608eec3"
+      }
+    }
+  }
+}

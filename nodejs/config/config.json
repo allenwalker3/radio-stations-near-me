@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "fcc_db",
+    "host": "mysqldb",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "password",
+    "database": "fcc_db_test",
+    "host": "mysqldb",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "password",
+    "database": "fcc_db_production",
+    "host": "mysqldb",
+    "dialect": "mysql"
+  }
+}
