@@ -29,7 +29,7 @@ Queries are extremely fast using the `ST_Distance_Sphere` MySQL function.
 
 ### Author
 
-[Allen Walker](mailto:allen_walker3@pme.me?subject=[GitHub])
+[Allen Walker](mailto:allen_walker3@pm.me?subject=[GitHub])
 ([@github](https://github.com/allenwalker3))  ([@linkedin](https://www.linkedin.com/in/allenwalker3/)) 
 
 Feel free to contact me with questions. I'm also open to senior developer opportunities.
