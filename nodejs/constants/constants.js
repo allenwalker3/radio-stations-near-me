@@ -33,7 +33,7 @@ const Formats = [
     'Multinational',
     'Native American',
     'News',
-    'News Talk',
+    'News/Talk',
     'Nostalgia',
     'Oldies',
     'Other',
