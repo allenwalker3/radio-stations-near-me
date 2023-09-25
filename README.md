@@ -3,7 +3,7 @@
   <h1 align="center">Radio Stations Near Me</h1>
 </p>
 
-This app uses your device's location to find nearby AM or FM station frequencies. This can be especially useful on road trips or when visiting a new city. Radio hobbyists who want to know the wattage and location of transmitters can align their antennas accordingly.
+This app uses your device's location to find nearby AM and FM station frequencies. This can be especially useful on road trips or when visiting a new city. Radio hobbyists who want to know the wattage and location of transmitters can align their antennas accordingly.
 
 Station format (e.g. Sports, Classical Rock) is available for most station frequencies. Users can update incorrect information, which is immediately reflected in the database and available to all users.
 
