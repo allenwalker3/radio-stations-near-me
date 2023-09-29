@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Radio Stations Near Me",
-    "description": "Find nearby regulated AM & FM radio station frequencies",
+    "description": "Find nearby AM & FM radio station frequencies",
     "slug": "radio-stations-near-me",
     "privacy": "unlisted",
     "userInterfaceStyle": "light",
@@ -20,6 +20,9 @@
       "icon": "./assets/icon-ios.png",
       "supportsTablet": true,
       "bundleIdentifier": "com.allenwalker.radiostationsnearme",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Your phone's GPS location is required to find radio station frequencies in your geographic area. Without GPS location information, no data will appear."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -30,7 +33,12 @@
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.FOREGROUND_SERVICE"
-      ]
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBuWFOjGBBcfp5V_rq2J_7BCCt4DlW-DA4"
+        }
+      } 
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -47,7 +55,7 @@
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          "locationWhenInUsePermission": "Your phone's GPS location is required to find radio station frequencies in your geographic area. Without GPS location information, no data will appear."
         }
       ]
     ],

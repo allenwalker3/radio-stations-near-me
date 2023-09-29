@@ -33,6 +33,9 @@
         "appleId": "eawcol1975@gmail.com",
         "ascAppId": "6466750677",
         "appleTeamId": "FKFBY9TKW6"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./pc-api-8177368621535267091-917-bf38379b6e40.json"
       }
     }
   }
