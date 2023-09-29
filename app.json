@@ -36,7 +36,7 @@
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyBuWFOjGBBcfp5V_rq2J_7BCCt4DlW-DA4"
+          "apiKey": "secret"
         }
       } 
     },
