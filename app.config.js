@@ -1,4 +1,4 @@
-{
+export default {
   "expo": {
     "name": "Radio Stations Near Me",
     "description": "Find nearby AM & FM radio station frequencies",
@@ -32,13 +32,14 @@
       "package": "com.allenwalker.radiostationsnearme",
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.FOREGROUND_SERVICE"
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.ACCESS_FINE_LOCATION"
       ],
       "config": {
         "googleMaps": {
-          "apiKey": "secret"
+          "apiKey": process.env.GOOGLE_SERVICES_API
         }
-      } 
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -51,7 +52,7 @@
             "usesCleartextTraffic": true
           }
         }
-      ],      
+      ],
       [
         "expo-location",
         {
