@@ -1,6 +1,4 @@
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-
-
 import { GlobalStyles } from '../constants/styles';
 
 

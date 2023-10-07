@@ -1,6 +1,7 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { GlobalStyles } from '../constants/styles';
 import { ReactNode } from 'react';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+
+import { GlobalStyles } from '../constants/styles';
 
 type PrimaryButtonProps = {
   children: ReactNode,  

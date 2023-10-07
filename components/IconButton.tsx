@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { IconProps } from '@expo/vector-icons/build/createIconSet';
 
 type IconButtonProps = {
   icon: any, color: string, onPress: () => void

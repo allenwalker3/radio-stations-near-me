@@ -6,10 +6,21 @@ const { Formats } = require('../constants/constants')
 const fs = require('fs');
 
 // db init
-const sequelize = new Sequelize('fcc_db', 'root', 'password', {
-  host: 'mysqldb',
+let database;
+let host;
+if (process.env.NODE_ENV === 'test') {
+  database = 'fcc_db_test'
+  host = 'localhost'
+} else {
+  database = 'fcc_db'
+  host = 'mysqldb'
+}
+
+const sequelize = new Sequelize(database, 'root', 'password', {
+  host: host,
   dialect: 'mysql'
 });
+
 
 const queryInterface = sequelize.getQueryInterface();
 (async () => {

@@ -23,6 +23,8 @@ services:
 
   mysqldb:
     image: mysql:8.0
+    ports: 
+      - 3306:3306
     restart: on-failure
     container_name: mysql-container
     env_file: ./.env

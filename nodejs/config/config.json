@@ -10,7 +10,7 @@
     "username": "root",
     "password": "password",
     "database": "fcc_db_test",
-    "host": "mysqldb",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "production": {

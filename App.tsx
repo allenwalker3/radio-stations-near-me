@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect, } from 'react';
 import { StyleSheet, View } from 'react-native';
+import FilterContextProvider from './store/context/filter-context';
+import AppScreens from './components/AppScreens';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
-import FilterContextProvider from './store/context/filter-context';
-import AppScreens from './components/AppScreens';
 import { enableLatestRenderer } from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import { OpenSans_600SemiBold, OpenSans_400Regular, useFonts } from '@expo-google-fonts/open-sans';

@@ -2,7 +2,6 @@ import { View, StyleSheet, Text } from 'react-native';
 
 import { GlobalStyles } from '../constants/styles';
 import PrimaryButton from './PrimaryButton';
-import { useNavigation } from '@react-navigation/core';
 
 function ErrorOverlay({ message, setMessage }) {
 

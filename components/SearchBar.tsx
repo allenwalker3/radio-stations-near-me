@@ -1,10 +1,7 @@
-import { FunctionComponent } from "react";
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { MainProps } from "../types/types";
 
-
-export const SearchBar = (props: MainProps) => {
+export const SearchBar = (props) => {
     return (
         <View style={styles.container}>
             <Text style={styles.range}>

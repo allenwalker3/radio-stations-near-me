@@ -1,14 +1,14 @@
+import { useContext } from 'react';
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { GlobalStyles } from "../constants/styles";
 import StationsScreen from "../screens/StationsScreen";
 import IconButton from "./IconButton";
 import SearchScreen from "../screens/SearchScreen";
 import StationDetailScreen from "../screens/StationDetailScreen";
-import { useContext, useEffect } from 'react';
 import { FilterContext } from "../store/context/filter-context";
-import { NavigationContainer } from "@react-navigation/native";
 import UpdateFormatScreen from "../screens/UpdateFormatScreen";
-import { getUniqueId } from 'react-native-device-info';
 
 const Stack = createNativeStackNavigator();
 const AppScreens = () => {
