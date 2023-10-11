@@ -9,11 +9,11 @@ const fs = require('fs');
 let database;
 let host;
 if (process.env.NODE_ENV === 'test') {
-  database = 'fcc_db_test'
-  host = 'localhost'
+  database = 'fcc_db_test';
+  host = 'localhost';
 } else {
-  database = 'fcc_db'
-  host = 'mysqldb'
+  database = 'fcc_db';
+  host = 'mysqldb';
 }
 
 const sequelize = new Sequelize(database, 'root', 'password', {
@@ -70,38 +70,38 @@ router.get('/', async (req, res) => {
   res.send(results);
 });
 
-router.post('/', async (req, res) => {
+router.put('/:callSign/:service', async (req, res) => {
   const ipAddress = req.socket.remoteAddress;
-  const callSign = req.body.callSign;
+  const { callSign, service } = req.params;
   const format = req.body.format;
-  const service = req.body.service;
-  if (Formats.includes(format) && callSign?.length < 8 && (service === 'FM' || service === 'AM') ) {
+  if (Formats.includes(format) && callSign?.length < 8 && (service === 'FM' || service === 'AM')) {
     const stations = await Station.findAll({ where: { callSign: callSign, service: service } });
     for (const station of stations) {
-      station.format = format
-      station.save()
+      station.format = format;
+      station.save();
     }
+
+    const date = new Date().getDate(); //Current Date
+    const month = new Date().getMonth() + 1; //Current Month
+    const year = new Date().getFullYear(); //Current Year
+    const hours = new Date().getHours(); //Current Hours
+    const min = new Date().getMinutes(); //Current Minutes
+    const sec = new Date().getSeconds(); //Current Seconds
+    const dateTime = month + '/' + date + '/' + year
+      + ' ' + hours + ':' + min + ':' + sec;
+
+    const log = `${ipAddress} ${dateTime} : ${callSign} : ${format}\n`;
+    fs.writeFile('./logs/updates.txt', log, { flag: 'a+' }, (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log("File is updated.");
+    });
+    res.sendStatus(200);
   }
-  const date = new Date().getDate(); //Current Date
-  const month = new Date().getMonth() + 1; //Current Month
-  const year = new Date().getFullYear(); //Current Year
-  const hours = new Date().getHours(); //Current Hours
-  const min = new Date().getMinutes(); //Current Minutes
-  const sec = new Date().getSeconds(); //Current Seconds
-  const dateTime = month + '/' + date + '/' + year
-    + ' ' + hours + ':' + min + ':' + sec
-
-  const log = `${ipAddress} ${dateTime} : ${callSign} : ${format}\n`
-
-
-  fs.writeFile('./logs/updates.txt', log, { flag: 'a+' }, (err) => {
-    if (err) {
-      throw err;
-    }
-    console.log("File is updated.");
-  });
-
-  res.send('Got a PUT request: ' + req.body);
+  else {
+    res.sendStatus(404);
+  }
 })
 
 router.get('/callSign/:callSign/:service', async (req, res) => {

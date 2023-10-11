@@ -5,14 +5,13 @@ import Station from '../models/station';
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_API_URL!;
 export async function fetchStations(distance: number, am: boolean, fm: boolean, loc_x: number, loc_y: number) {
 
-  const searchUrl = `${BACKEND_URL}?distance=${distance}&am=${am}&fm=${fm}&loc_y=${loc_y}&loc_x=${loc_x}`
+  const searchUrl = `${BACKEND_URL}?distance=${distance}&am=${am}&fm=${fm}&loc_y=${loc_y}&loc_x=${loc_x}`;
   console.log('searchUrl: ' + searchUrl);
   const response = await axios.get(searchUrl);
   //console.log('response: ' + JSON.stringify(response));
   //console.log('got response')
   const stations = [];
 
-  //    for ( const response of responses)
   for (const resp of response.data) {
     const stationObj = new Station(
       resp['id'],
@@ -41,10 +40,8 @@ export async function fetchStations(distance: number, am: boolean, fm: boolean, 
 }
 
 export const updateFormat = async (callSign: string, format: string, service: string) => {
-  const response = await axios.post(BACKEND_URL, {
-    callSign: callSign,
-    format: format,
-    service: service
+  const response = await axios.put(`${BACKEND_URL}/${callSign}/${service}`, {
+    format: format
   });
   return response.status === 200;
 }
