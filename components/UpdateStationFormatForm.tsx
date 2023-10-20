@@ -6,7 +6,7 @@ import { GlobalStyles } from '../constants/styles';
 import { Formats } from '../constants/constants';
 
 
-type UpdateFormatFormProps = {
+type UpdateStationFormatFormProps = {
     submitButtonLabel: string,
     onCancel: () => void,
     onSubmit: (val: {
@@ -17,7 +17,8 @@ type UpdateFormatFormProps = {
     defaultValues: any
 }
 
-const UpdateFormatForm = ({ submitButtonLabel, onCancel, onSubmit, defaultValues}: UpdateFormatFormProps) => {
+const UpdateStationFormatForm = 
+    ({ submitButtonLabel, onCancel, onSubmit, defaultValues}: UpdateStationFormatFormProps) => {
 
     const [selectedFormat, setSelectedFormat] = useState('');
     useEffect(() => {
@@ -62,7 +63,7 @@ const UpdateFormatForm = ({ submitButtonLabel, onCancel, onSubmit, defaultValues
 }
 
 
-export default UpdateFormatForm;
+export default UpdateStationFormatForm;
 
 
 const styles = StyleSheet.create({

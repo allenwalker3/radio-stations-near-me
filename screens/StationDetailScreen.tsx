@@ -5,7 +5,7 @@ import Station from '../models/station';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import MapView, { Marker } from 'react-native-maps';
 import SecondaryButton from '../components/SecondaryButton';
-import { getAntennas } from '../util/http';
+import { fetchAntennas } from '../util/http';
 import { FilterContext } from '../store/context/filter-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 const { height, width } = Dimensions.get('window');
@@ -36,27 +36,23 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 
 type StationDetailScreenParams = {
   StationDetail: { format: string, service: string, callSign: string };
-  UpdateFormat: { callSign: string, service: string };
+  UpdateStationFormat: { callSign: string, service: string };
 }
 
 const StationDetailScreen = ({ navigation, route }
   : NativeStackScreenProps<StationDetailScreenParams, "StationDetail">) => {
 
-
   const callSign = route.params?.callSign!;
   const service = route.params?.service!;
   const format = route.params?.format;
 
-
   const { stations } = useContext(FilterContext)
-
   const { frequency } = stations.find(s => s.callSign === callSign && s.service === service)!;
-
   const [antennas, setAntennas] = useState<Station[]>([]);
 
   useEffect(() => {
     (async () => {
-      setAntennas(await getAntennas(callSign, service))
+      setAntennas(await fetchAntennas(callSign, service))
     })();
   }, [callSign])
 
@@ -78,7 +74,8 @@ const StationDetailScreen = ({ navigation, route }
             { fontSize: 28, color: GlobalStyles.colors.primary800 }]}>No Data</Text>
           )}
         </View>
-        <SecondaryButton onPress={() => navigation.navigate("UpdateFormat", { callSign: callSign, service: service })}>
+        <SecondaryButton 
+          onPress={() => navigation.navigate("UpdateStationFormat", { callSign: callSign, service: service })}>
           <Text>Update</Text>
         </SecondaryButton>
       </View>

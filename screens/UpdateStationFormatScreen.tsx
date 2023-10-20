@@ -2,19 +2,19 @@ import { useContext, useState } from 'react';
 import { Alert, StyleSheet, TextInput, View } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FilterContext } from '../store/context/filter-context';
-import { updateFormat } from '../util/http';
+import { updateStationFormat } from '../util/http';
 import LoadingOverlay from '../components/LoadingOverlay';
 import ErrorOverlay from '../components/ErrorOverlay';
-import UpdateFormatForm from '../components/UpdateFormatForm';
+import UpdateStationFormatForm from '../components/UpdateStationFormatForm';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type UpdateFormatScreenParams = {
-    UpdateFormat: { callSign: string, service: string } | undefined
+type UpdateStationFormatScreenParams = {
+    UpdateStationFormat: { callSign: string, service: string } | undefined
     StationDetail: {} | undefined
 }
 
-const UpdateFormatScreen = ({ navigation, route }
-    : NativeStackScreenProps<UpdateFormatScreenParams, "UpdateFormat">) => {
+const UpdateStationFormatScreen = ({ navigation, route }
+    : NativeStackScreenProps<UpdateStationFormatScreenParams, "UpdateStationFormat">) => {
     const callSign = route.params?.callSign;
     const service = route.params?.service
     const filterCtx = useContext(FilterContext);
@@ -22,7 +22,6 @@ const UpdateFormatScreen = ({ navigation, route }
     const { setRefresh, refresh } = filterCtx;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-
 
     const station = stations.find(
         (station) => station.callSign === callSign && station.service === service
@@ -32,17 +31,16 @@ const UpdateFormatScreen = ({ navigation, route }
         navigation.goBack();
     }
 
-    function confirmHandler(stationData) {
+    function confirmHandler(stationData: any) {
         (async () => {
             try {
                 setLoading(true);
                 setRefresh(!refresh)
-                const response = await updateFormat(stationData.callSign, stationData.format, stationData.service);
+                const response = await updateStationFormat(stationData);
                 Alert.alert('Database updated, Thank you');
                 if (response) {
                     setRefresh(true)
-                    navigation.navigate('StationDetail',
-                        { callSign: stationData.callSign, format: stationData.format, service: stationData.service });
+                    navigation.navigate('StationDetail', stationData);
                 }
             } catch (e) {
                 setError(e.message);
@@ -59,7 +57,7 @@ const UpdateFormatScreen = ({ navigation, route }
                 (loading ? (
                     <LoadingOverlay />
                 ) : (
-                    <UpdateFormatForm
+                    <UpdateStationFormatForm
                         submitButtonLabel={'Save'}
                         onSubmit={confirmHandler}
                         onCancel={cancelHandler}
@@ -87,4 +85,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default UpdateFormatScreen;
+export default UpdateStationFormatScreen;

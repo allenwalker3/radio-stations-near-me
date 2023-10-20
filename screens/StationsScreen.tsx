@@ -66,15 +66,19 @@ const StationsScreen = ({ navigation }: NativeStackScreenProps<StationsScreenPar
                 });
 
                 try {
+                    const args =
+                    {
+                        range: range,
+                        am: AM,
+                        fm: FM,
+                        latitude: location.coords.latitude,
+                        longitude: location.coords.longitude
+                    }
                     const stations =
-                        await fetchStations(range, AM, FM, location.coords.latitude, location.coords.longitude) || [];
+                        await fetchStations(args) || [];
                     setStations(stations);
-                    //console.log(JSON.stringify(stations))
-                    //   console.log('got stations')
                 } catch (e) {
-                    console.log(JSON.stringify(e))
                     setError('Could not fetch stations: ' + e.message);
-                    // Alert.alert('Could not fetch stations:', error.message);
                 }
             }
             setLoading(false);
@@ -127,7 +131,7 @@ const StationsScreen = ({ navigation }: NativeStackScreenProps<StationsScreenPar
     return (<>
         {!error ? (
             <View style={styles.container}>
-                {loading? (
+                {loading ? (
                     <LoadingOverlay />
                 ) : (
                     <FlatList
@@ -157,8 +161,12 @@ const styles = StyleSheet.create({
         marginBottom: IOS ? 16 : 0
     },
     header: { height: 40, backgroundColor: '#fff', flexDirection: 'row', alignItems: 'center' },
-    headerText: { textAlign: 'left', marginHorizontal: 4, fontSize: 16, fontFamily: 'OpenSans_600SemiBold'},
-    text: { textAlign: 'left', marginHorizontal: 4, fontSize: 16, fontFamily: 'OpenSans_400Regular' },
+    headerText: {
+        textAlign: 'left', marginHorizontal: 4, fontSize: 16, fontFamily: 'OpenSans_600SemiBold'
+    },
+    text: {
+        textAlign: 'left', marginHorizontal: 4, fontSize: 16, fontFamily: 'OpenSans_400Regular'
+    },
     dataWrapper: { marginTop: -1 },
     item: {
         flexDirection: 'row', height: 45, alignItems: 'center',

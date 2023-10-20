@@ -8,7 +8,7 @@ import IconButton from "./IconButton";
 import SearchScreen from "../screens/SearchScreen";
 import StationDetailScreen from "../screens/StationDetailScreen";
 import { FilterContext } from "../store/context/filter-context";
-import UpdateFormatScreen from "../screens/UpdateFormatScreen";
+import UpdateStationFormatScreen from "../screens/UpdateStationFormatScreen";
 
 const Stack = createNativeStackNavigator();
 const AppScreens = () => {
@@ -43,8 +43,8 @@ const AppScreens = () => {
                 />
 
                 <Stack.Screen
-                    name="UpdateFormat"
-                    component={UpdateFormatScreen}
+                    name="UpdateStationFormat"
+                    component={UpdateStationFormatScreen}
                 />
             </Stack.Navigator>
         </NavigationContainer>

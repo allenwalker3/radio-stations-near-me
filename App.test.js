@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { render, fireEvent, waitFor, screen, act } from '@testing-library/react-native';
 import '@testing-library/jest-native/extend-expect';
 import Station from './models/station';
 import StationsScreen from './screens/StationsScreen';
 import SearchScreen from './screens/SearchScreen';
 import StationDetailScreen from './screens/StationDetailScreen';
-import UpdateFormatScreen from './screens/UpdateFormatScreen';
-import { getAntennas } from './util/http';
+import UpdateStationFormatScreen from './screens/UpdateStationFormatScreen';
 import * as Location from 'expo-location';
 import * as Font from 'expo-font';
 import axios from 'axios';
@@ -14,14 +13,14 @@ import '@testing-library/jest-dom'
 import App from './App'
 
 let realUseContext;
-let useContextMock;
-// Setup mock
+let mockUseContext;
 const RANGE = 10
+
 beforeEach(() => {
   realUseContext = React.useContext;
-  useContextMock = React.useContext = jest.fn();
-  //// [new Station(1, 'WZZZ', '99.5', 'FM','x','x','x','x','x','x','x','x',{ coordinates: [0,0]},'x','x',10.22,'Sports')]
-  useContextMock.mockReturnValue({
+  mockUseContext = React.useContext = jest.fn();
+
+  mockUseContext.mockReturnValue({
     stations: [{ callSign: 'WZZZ', frequency: '99.5', service: 'FM' }], 
     range: RANGE
   });
@@ -65,11 +64,12 @@ describe('App', () => {
   xit('Renders Update Format Screen', async () => {
     const push = jest.fn();
     const route = { params: { service: 'FM', format: 'Sports', callSign: "WZZZ" } }
-    const { findByTestId, findByText } = await render(<UpdateFormatScreen navigation={{ push }} route={route} />)
+    const { findByTestId, findByText } = 
+      await render(<UpdateStationFormatScreen navigation={{ push }} route={route} />)
     
-    const updateFormatFn = jest.spyOn(require('./util/http'), 'updateFormat').mockResolvedValue(true)
+    const updateStationFormatFn = jest.spyOn(require('./util/http'), 'updateStaitonFormat').mockResolvedValue(true)
     fireEvent.press(await findByText('Submit'))
-    expect(updateFormatFn).toBeCalledWith('YYYY', 'Sports', 'AM')
+    expect(updateStationFormatFn).toBeCalledWith('YYYY', 'Sports', 'AM')
 
   })
 
