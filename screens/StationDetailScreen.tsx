@@ -42,17 +42,14 @@ type StationDetailScreenParams = {
 const StationDetailScreen = ({ navigation, route }
   : NativeStackScreenProps<StationDetailScreenParams, "StationDetail">) => {
 
-  const callSign = route.params?.callSign!;
-  const service = route.params?.service!;
-  const format = route.params?.format;
-
+  const { callSign, service, format } = route.params
   const { stations } = useContext(FilterContext)
   const { frequency } = stations.find(s => s.callSign === callSign && s.service === service)!;
   const [antennas, setAntennas] = useState<Station[]>([]);
 
   useEffect(() => {
     (async () => {
-      setAntennas(await fetchAntennas(callSign, service))
+      setAntennas(await fetchAntennas({callSign, service}))
     })();
   }, [callSign])
 

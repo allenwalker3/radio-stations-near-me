@@ -102,7 +102,7 @@ const StationsScreen = ({ navigation }: NativeStackScreenProps<StationsScreenPar
             </View>
         </View>
     );
-    const renderItem = ({ item, index, separators }: { item: Station, index: number }) => (
+    const renderItem = ({ item, index }: { item: Station, index: number }) => (
         <Pressable android_ripple={{ color: '#ccc' }}
             style={({ pressed }) => [
                 pressed ? styles.linkPressed : null,

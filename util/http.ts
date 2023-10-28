@@ -12,27 +12,27 @@ export async function fetchStations(args: any) {
   const response = await axios.get(searchUrl);
   const stations = [];
 
-  for (const station of response.data) {
-    const stationObj = new Station(
-      station['id'],
-      station['callSign'],
-      station['frequency'],
-      station['service'],
-      station['directional'],
-      station['hoursOperation'],
-      station['city'],
-      station['state'],
-      station['country'],
-      station['fileNumber'],
-      station['power'],
-      station['facilityId'],
-      station['geom'],
-      station['licensee'],
-      station['applicationId'],
-      station['distance'],
-      station['format']
+  for (const stationItem of response.data) {
+    const station = new Station(
+      stationItem['id'],
+      stationItem['callSign'],
+      stationItem['frequency'],
+      stationItem['service'],
+      stationItem['directional'],
+      stationItem['hoursOperation'],
+      stationItem['city'],
+      stationItem['state'],
+      stationItem['country'],
+      stationItem['fileNumber'],
+      stationItem['power'],
+      stationItem['facilityId'],
+      stationItem['geom'],
+      stationItem['licensee'],
+      stationItem['applicationId'],
+      stationItem['distance'],
+      stationItem['format']
     );
-    stations.push(stationObj);
+    stations.push(station);
   }
 
   return stations;
@@ -47,7 +47,8 @@ export const updateStationFormat = async (args: any) => {
   return response.status === 200;
 }
 
-export const fetchAntennas = async (callSign: string, service: string) => {
+export const fetchAntennas = async (args: any) => {
+  const { callSign, service} = args
   const response = await axios.get(`${BACKEND_URL}/callSign/${callSign}/${service}`);
   return response.data;
 }

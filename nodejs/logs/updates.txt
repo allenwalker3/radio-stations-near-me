@@ -26,3 +26,6 @@
 ::ffff:172.20.0.1 10/20/2023 19:30:46 : KLZ : Adult Album Alternative
 ::ffff:172.20.0.1 10/20/2023 19:31:33 : KLZ : Adult Hits
 ::ffff:127.0.0.1 10/20/2023 13:32:11 : KNUS : Oldies
+::ffff:172.20.0.1 10/28/2023 19:28:38 : KLZ : Adult Contemporary
+::ffff:172.20.0.1 10/28/2023 19:29:33 : KLZ : 80's Rock
+::ffff:127.0.0.1 10/28/2023 13:38:9 : KNUS : Oldies
