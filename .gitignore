@@ -18,7 +18,7 @@ web-build/
 
 
 .env.local
-#.env.production
+.env.production
 
 nodejs/fcc/*.csv
 nodejs/fcc/format
