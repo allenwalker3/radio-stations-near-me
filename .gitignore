@@ -17,7 +17,8 @@ web-build/
 .metro-health-check*
 
 
-.env*.local
+.env.local
+#.env.production
 
 nodejs/fcc/*.csv
 nodejs/fcc/format

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Station from '../models/station';
 
-//const BACKEND_URL = 'http://192.168.1.144:3000';
-const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_API_URL!;
+const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_API_URL;
+
 export async function fetchStations(args: any) {
   const { range, am, fm, latitude, longitude } = args 
   const searchUrl 

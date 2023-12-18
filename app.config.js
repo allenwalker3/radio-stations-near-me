@@ -7,7 +7,7 @@ export default {
     "userInterfaceStyle": "light",
     "orientation": "portrait",
     "icon": "./assets/icon-ios.png",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "splash": {
       "image": "./assets/iphone-splash-preview-dark.png",
       "resizeMode": "cover",

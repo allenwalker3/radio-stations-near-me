@@ -34,13 +34,10 @@ const ANDROID = Platform.OS === 'android';
 const LATITUDE_DELTA = 0.28; // Zoom level
 const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 
-type StationDetailScreenParams = {
-  StationDetail: { format: string, service: string, callSign: string };
-  UpdateStationFormat: { callSign: string, service: string };
-}
+// route params
+// format: string, service: string, callSign: string
 
-const StationDetailScreen = ({ navigation, route }
-  : NativeStackScreenProps<StationDetailScreenParams, "StationDetail">) => {
+const StationDetailScreen = ({ navigation, route }: any) => {
 
   const { callSign, service, format } = route.params
   const { stations } = useContext(FilterContext)
@@ -49,7 +46,7 @@ const StationDetailScreen = ({ navigation, route }
 
   useEffect(() => {
     (async () => {
-      setAntennas(await fetchAntennas({callSign, service}))
+      setAntennas(await fetchAntennas({ callSign, service }))
     })();
   }, [callSign])
 
@@ -71,7 +68,7 @@ const StationDetailScreen = ({ navigation, route }
             { fontSize: 28, color: GlobalStyles.colors.primary800 }]}>No Data</Text>
           )}
         </View>
-        <SecondaryButton 
+        <SecondaryButton
           onPress={() => navigation.navigate("UpdateStationFormat", { callSign: callSign, service: service })}>
           <Text>Update</Text>
         </SecondaryButton>

@@ -8,13 +8,8 @@ import ErrorOverlay from '../components/ErrorOverlay';
 import UpdateStationFormatForm from '../components/UpdateStationFormatForm';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type UpdateStationFormatScreenParams = {
-  UpdateStationFormat: { callSign: string, service: string } | undefined
-  StationDetail: {} | undefined
-}
 
-const UpdateStationFormatScreen = ({ navigation, route }
-  : NativeStackScreenProps<UpdateStationFormatScreenParams, "UpdateStationFormat">) => {
+const UpdateStationFormatScreen = ({ navigation, route }: any) => {
   const { callSign, service } = route.params!;
   const filterCtx = useContext(FilterContext);
   const stations = filterCtx.stations;

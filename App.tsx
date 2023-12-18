@@ -13,6 +13,9 @@ enableLatestRenderer();
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
+
+
+
 const App = () => {
 
   const [appIsReady, setAppIsReady] = useState(false);
@@ -54,6 +57,8 @@ const App = () => {
   if (!fontsLoaded || fontError) {
     return null;
   }
+
+
   return (
     <>
       <StatusBar style="light" />
@@ -72,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    width: '100%', height: '100%' 
+    width: '100%', height: '100%'
     //  marginTop: StatusBar.currentHeight || 0
     //alignItems: 'center',
     //justifyContent: 'center',
