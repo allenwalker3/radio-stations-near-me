@@ -61,9 +61,7 @@ const CustomLocationScreen = ({ navigation }: any) => {
             query={{
               key: GOOGLE_SERVICES_API_KEY,
               language: 'en',
-              //components: { country: ["us", "ca"] }
-              //components: { country: ["us", "ca"] }
-              //components: 'country:us',
+              components: 'country:us|country:ca',
             }}
 
             renderLeftButton={() => <Ionicons name='search' size={28} color="#A7A9AC" />}
